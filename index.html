@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Solara Pilates</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +31,9 @@
             position: relative; /* Necesario para posicionar el botón CTA */
             min-height: 100vh;
             box-sizing: border-box;
+            
+            /* Evita el "parpadeo" horizontal al ajustar el tamaño */
+            overflow-x: hidden; 
         }
 
         /* --- 1. Header (Navegación) --- */
@@ -38,9 +43,7 @@
             padding: 20px 5%;
             width: 90%;
             
-            /* Esta es la parte de la "ola".
-              Es una forma compleja, así que la simulamos con un borde redondeado amplio.
-            */
+            /* Esta es la parte de la "ola" */
             border-bottom-left-radius: 80% 60px;
             border-bottom-right-radius: 80% 60px;
             
@@ -56,6 +59,8 @@
             display: flex;
             justify-content: center;
             gap: 20px;
+            /* Transición suave al cambiar de dirección */
+            transition: all 0.3s ease;
         }
 
         .main-nav a {
@@ -68,6 +73,7 @@
             font-weight: 500;
             font-size: 16px;
             transition: all 0.3s ease;
+            display: block; /* Asegura que ocupe el espacio */
         }
 
         .main-nav a:hover {
@@ -91,6 +97,7 @@
             line-height: 1;
             margin: 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            transition: font-size 0.3s ease; /* Transición suave */
         }
 
         /* --- 3. Botón de "Primera clase gratis" (CTA) --- */
@@ -115,6 +122,9 @@
             gap: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            
+            /* Asegura que los elementos internos no se fuercen a una nueva línea */
+            white-space: nowrap; 
         }
         
         .cta-button:hover {
@@ -134,8 +144,65 @@
             font-size: 20px;
             font-weight: 700;
             line-height: 1;
+            /* Evita que el '+' se encoja */
+            flex-shrink: 0; 
         }
+        
+        
+        
+        /* ==================================================================
+         NUEVO CÓDIGO PARA CELULARES (Responsive) 
+        ==================================================================
+        */
+        @media (max-width: 768px) {
 
+            body {
+                /* Achicamos el patrón de fondo */
+                background-size: 80px; 
+            }
+
+            .site-header {
+                /* Hacemos que la "ola" sea un poco menos pronunciada */
+                border-bottom-left-radius: 60% 40px;
+                border-bottom-right-radius: 60% 40px;
+            }
+
+            .main-nav ul {
+                /* Apilamos los botones del menú */
+                flex-direction: column; 
+                gap: 15px;
+            }
+
+            .main-content {
+                /* Centramos el título y ajustamos el padding */
+                padding: 40px 5% 0 5%;
+                text-align: center;
+            }
+
+            .brand-name {
+                /* Reducimos drásticamente el tamaño del logo */
+                font-size: 90px; 
+            }
+
+            .cta-button {
+                /* Centramos el botón y lo hacemos más ancho */
+                width: 90%;
+                left: 50%;
+                bottom: 20px;
+                transform: translateX(-50%);
+                box-sizing: border-box; /* Para que el padding no afecte el ancho */
+                
+                /* Centramos el texto y el '+' dentro del botón */
+                justify-content: center; 
+            }
+            
+            .cta-button:hover {
+                /* Desactivamos el efecto hover en móvil, 
+                   ya que no existe el "hover" */
+                transform: none; 
+            }
+        }
+        
     </style>
 </head>
 <body>
